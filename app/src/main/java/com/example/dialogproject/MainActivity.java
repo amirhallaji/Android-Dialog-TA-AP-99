@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         final long progress = 3000L ;
         long secondaryProgress = 1500L;
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);   //default style
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
@@ -36,15 +37,16 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        },progress);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.show();
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 if(progressDialog.getProgress() < progressDialog.getMax()) {
                     progressDialog.incrementProgressBy(12);
                 }
-//                else {
-//                    progressDialog.dismiss();
-//                }
+                else {
+                    progressDialog.dismiss();
+                }
             }
         }, 0, progress);
         new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -55,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         },0,secondaryProgress);
-        progressDialog.show();
+
+
+
     }
 
 
